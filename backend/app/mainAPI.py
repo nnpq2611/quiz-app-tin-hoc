@@ -19,6 +19,9 @@ def get_db():
     finally:
         db.close()
 
+@app.get('/')
+async def get():
+    return "Welcome to Quiz App"
 
 @app.post("/users/", response_model=Schemas.User)
 def create_user(user: Schemas.UserCreate, db: Session = Depends(get_db)):
