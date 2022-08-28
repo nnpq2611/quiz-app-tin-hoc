@@ -1,35 +1,14 @@
 from pydantic import BaseModel
 
 
-class ItemBase(BaseModel):
+class Collections(BaseModel):
     title: str
-    description: str 
 
-
-class ItemCreate(ItemBase):
-    pass
-
-
-class Item(ItemBase):
+class Questions(BaseModel):
     id: int
-    owner_id: int
-
-    class Config:
-        orm_mode = True
-
-
-class UserBase(BaseModel):
-    email: str
-
-
-class UserCreate(UserBase):
-    password: str
-
-
-class User(UserBase):
-    id: int
-    is_active: bool
-    items: list[Item] = []
-
-    class Config:
-        orm_mode = True
+    title: str
+    answers1: str
+    answers2: str
+    answers3: str
+    answers4: str
+    correct_answer: str

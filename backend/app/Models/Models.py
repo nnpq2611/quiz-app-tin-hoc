@@ -1,26 +1,29 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from multiprocessing.connection import answer_challenge
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, func, TIMESTAMP
 from sqlalchemy.orm import relationship
 
 from ..database.Database import Base
 
 
-class User(Base):
-    __tablename__ = "users"
+class Collections(Base):
+    __tablename__ = "collections"
 
-    id = Column(Integer, primary_key=True, index=True)
-    email = Column(String, unique=True, index=True)
-    hashed_password = Column(String)
-    is_active = Column(Boolean, default=True)
-
-    items = relationship("Item", back_populates="owner")
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    title = Column(String, nullable=False)
+    create_at = Column(TIMESTAMP, nullable=False, server_default=func.now())
 
 
-class Item(Base):
-    __tablename__ = "items"
+class Questions(Base):
+    __tablename__ = "questions"
 
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)
-    description = Column(String, index=True)
-    owner_id = Column(Integer, ForeignKey("users.id"))
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    title = Column(String, nullable=False)
+    answer1 = Column(String, nullable=False)
+    answer2 = Column(String, nullable=False)
+    answer3 = Column(String, nullable=False)
+    answer4 = Column(String, nullable=False)
+    correct_answer = Column(String, nullable=False)
+    collections_id = Column(Integer, ForeignKey("collections.id"), nullable=False)
+    create_at = Column(TIMESTAMP, nullable=False, server_default=func.now())
 
-    owner = relationship("User", back_populates="items")
+
