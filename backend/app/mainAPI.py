@@ -1,4 +1,3 @@
-from turtle import title
 from .Models import Models
 from .database import Schemas
 from fastapi import Depends, FastAPI, HTTPException, File, UploadFile
@@ -25,31 +24,23 @@ def get_db():
 async def get():
     return "Welcome to Quiz App"
 
-# @app.post("/users/", response_model=Schemas.User)
-# def create_user(user: Schemas.UserCreate, db: Session = Depends(get_db)):
-#     db_user = Crud.get_user_by_email(db, email=user.email)
-#     if db_user:
-#         raise HTTPException(status_code=400, detail="Email already registered")
-#     return Crud.create_user(db=db, user=user)
-
 
 @app.get("/collections/")
 def get_collections(db: Session = Depends(get_db)):
     collections = Crud.get_collections(db=db)
     return collections
 
+
 @app.get("/questions/")
-def get_questions(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    questions = Crud.get_questions(db, skip=skip, limit=limit)
+def get_questions(collections_id: int, db: Session = Depends(get_db)):
+    questions = Crud.get_questions(db=db, collections_id=collections_id)
     return questions
 
-@app.post("/collections/")
-def create_collection(collection: Schemas.Collections, db: Session = Depends(get_db)):
-    return Crud.create_collection(db=db, collection=collection)
 
-
-@app.post("/files/")
+@app.post("/questions/")
 async def create_file(file: UploadFile = File(...),  db: Session = Depends(get_db)):
     return Crud.create_question(db=db, file=file)
+
+# post test example:
 
 

@@ -2,6 +2,7 @@ from pydantic import BaseModel
 
 
 class Collections(BaseModel):
+    id: int
     title: str
 
 class Questions(BaseModel):
@@ -12,3 +13,4 @@ class Questions(BaseModel):
     answers3: str
     answers4: str
     correct_answer: str
+    collections_id: int
