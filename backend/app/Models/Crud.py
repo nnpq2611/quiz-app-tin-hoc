@@ -99,5 +99,18 @@ def check_answer(db: Session, test: Schemas.Test):
         item['id'] = question.id
         item['correct_answer'] = question.correct_answer
         correct_answer.append(item)
-    return correct_answer
+    
+    point = 0
+    wrong_answer = []
+    
+    for i in test.answers:
+        for j in correct_answer:
+            if i['id'] == j['id']:
+                if i['answer'] == j['correct_answer']:
+                    point += 1
+                else:
+                    wrong_answer.append({"id": i['id'], "answer": i['answer'], "correct_answer": j['correct_answer']})
+                    
+    return {"point": point, "wrong_answer": wrong_answer}
+
 

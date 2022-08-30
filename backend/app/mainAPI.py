@@ -43,6 +43,6 @@ async def create_file(file: UploadFile = File(...),  db: Session = Depends(get_d
 
 # post test example:
 
-@app.post("/test")
+@app.get("/test")
 def check_answer(test: Schemas.Test, db: Session = Depends(get_db)):
     return Crud.check_answer(db=db, test=test)
