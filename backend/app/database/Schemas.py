@@ -1,3 +1,4 @@
+from array import array
 from pydantic import BaseModel
 
 
@@ -13,4 +14,9 @@ class Questions(BaseModel):
     answers3: str
     answers4: str
     correct_answer: str
+    collections_id: int
+
+class Test(BaseModel):
+    id: int
+    answers: list
     collections_id: int
