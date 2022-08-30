@@ -35,7 +35,7 @@ def get_questions(db: Session, collections_id: int):
     return (data != []) and data or "No questions"
 
 
-def create_question(db: Session, file: UploadFile = File(...)):
+def create_questions(db: Session, file: UploadFile = File(...)):
     dir = f'./app/data/{file.filename}'
     with open(dir, 'wb') as buffer:
         shutil.copyfileobj(file.file, buffer)
@@ -102,7 +102,7 @@ def check_answer(db: Session, test: Schemas.Test):
     
     point = 0
     wrong_answer = []
-    
+
     for i in test.answers:
         for j in correct_answer:
             if i['id'] == j['id']:

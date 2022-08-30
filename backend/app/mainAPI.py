@@ -38,11 +38,11 @@ def get_questions(collections_id: int, db: Session = Depends(get_db)):
 
 
 @app.post("/questions/")
-async def create_file(file: UploadFile = File(...),  db: Session = Depends(get_db)):
-    return Crud.create_question(db=db, file=file)
+async def create_questions(file: UploadFile = File(...),  db: Session = Depends(get_db)):
+    return Crud.create_questions(db=db, file=file)
 
 # post test example:
 
-@app.get("/test")
+@app.get("/check_answer/")
 def check_answer(test: Schemas.Test, db: Session = Depends(get_db)):
     return Crud.check_answer(db=db, test=test)
