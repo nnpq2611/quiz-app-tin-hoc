@@ -17,6 +17,5 @@ class Questions(BaseModel):
     collections_id: int
 
 class Test(BaseModel):
-    id: int
     answers: list
     collections_id: int
