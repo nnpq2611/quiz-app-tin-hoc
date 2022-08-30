@@ -91,7 +91,7 @@ def create_questions(db: Session, file: UploadFile = File(...)):
     return {"data": data}
 
 
-def check_answer(db: Session, test: Schemas.Test):
+def check_answers(db: Session, test: Schemas.Test):
     data = db.query(Models.Questions).filter(Models.Questions.collections_id == test.collections_id).all()
     correct_answer = []
     for question in data:
