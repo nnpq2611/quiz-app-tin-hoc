@@ -2,8 +2,7 @@ from sqlalchemy.orm import Session
 
 from ..database import Schemas
 
-from fastapi import File, UploadFile
-
+from fastapi import UploadFile
 import shutil
 import docx
 
@@ -35,7 +34,7 @@ def get_questions(db: Session, collections_id: int):
     return (data != []) and data or "No questions"
 
 
-def create_questions(db: Session, file: UploadFile = File(...)):
+def create_questions(db: Session, file: UploadFile):
     dir = f'./app/data/{file.filename}'
     with open(dir, 'wb') as buffer:
         shutil.copyfileobj(file.file, buffer)
@@ -88,7 +87,7 @@ def create_questions(db: Session, file: UploadFile = File(...)):
         db.commit()
         db.refresh(db_question)
 
-    return {"data": data}
+    return data
 
 
 def check_answers(db: Session, test: Schemas.Test):
