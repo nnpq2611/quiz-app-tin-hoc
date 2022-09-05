@@ -23,10 +23,7 @@ def get_questions(db: Session, collections_id: int):
         data.append({
             'id': question.id,
             'title': question.title,
-            'answer1': question.answer1,
-            'answer2': question.answer2,
-            'answer3': question.answer3,
-            'answer4': question.answer4,
+            'answers': [question.answer1, question.answer2, question.answer3, question.answer4]
         })
     
     data = sorted(data, key=lambda k: k['id'])    
