@@ -9,10 +9,23 @@
   text-decoration: none;
   margin: 0 300px;
   color: white;
+  font-size: 20px;
 }
 
 .test h1 {
   text-align: center;
+}
+
+.test .btn-primary {
+  margin-left: 2%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.test .btn-danger {
+  margin-left: 60%;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .question {
@@ -23,4 +36,39 @@
 
 .question .answer {
   margin-left: 5%;
+}
+
+.correct-answer {
+  color: green;
+}
+
+.wrong-answer {
+  color: red;
+}
+
+.results {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 30px;
+}
+
+.results h1{
+  text-align: center;
+}
+
+.results h2{
+  margin: 40px 0;
+}
+
+.results .score{
+  color: red;
+}
+
+.results p{
+  font-size: 18px;
+}
+
+.results .answer{
+  margin-left: 50px;
 }

@@ -58,6 +58,6 @@ async def create_questions(file: UploadFile = File(...),  db: Session = Depends(
 
 # post test example:
 
-@app.get("/check_answers/")
-def check_answers(test: Schemas.Test, db: Session = Depends(get_db)):
-    return Crud.check_answers(db=db, test=test)
+@app.post("/results/")
+def results(test: Schemas.Test, db: Session = Depends(get_db)):
+    return Crud.results(db=db, test=test)

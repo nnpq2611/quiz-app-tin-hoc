@@ -87,26 +87,25 @@ def create_questions(db: Session, file: UploadFile):
     return data
 
 
-def check_answers(db: Session, test: Schemas.Test):
+def results(db: Session, test: Schemas.Test):
     data = db.query(Models.Questions).filter(Models.Questions.collections_id == test.collections_id).all()
     correct_answer = []
     for question in data:
         item = {}
         item['id'] = question.id
+        item['title'] = question.title
         item['correct_answer'] = question.correct_answer
         correct_answer.append(item)
     
-    point = 0
+    score = 0
     wrong_answer = []
 
     for i in test.answers:
         for j in correct_answer:
             if i['id'] == j['id']:
                 if i['answer'] == j['correct_answer']:
-                    point += 1
+                    score += 1
                 else:
-                    wrong_answer.append({"id": i['id'], "answer": i['answer'], "correct_answer": j['correct_answer']})
+                    wrong_answer.append({"id": i['id'], "question": j['title'] , "answer": i['answer'], "correct_answer": j['correct_answer']})
                     
-    return {"point": point, "wrong_answer": wrong_answer}
-
-
+    return {"score": score, "wrong_answer": wrong_answer}
