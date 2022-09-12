@@ -30,8 +30,6 @@ const Collections = () => {
     <p>Loading ...</p>
   ) : (
     <div className="collections">
-        {console.log(collections)}
-      <h1>Quizz App</h1>
       {collections.map((collection) => (
         <div
           className="collection"

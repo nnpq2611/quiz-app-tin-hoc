@@ -33,7 +33,7 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form-up-load" onSubmit={handleSubmit}>
       <input type="file" onChange={handleFileSelect} />
       <input type="submit" value="Upload File" />
     </form>
