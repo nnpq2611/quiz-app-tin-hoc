@@ -29,10 +29,6 @@
   margin: 20px;
 }
 
-.collection h2:hover{
-  cursor: pointer;
-}
-
 .test h1 {
   text-align: center;
 }
