@@ -109,3 +109,10 @@ def results(db: Session, test: Schemas.Test):
                     wrong_answer.append({"id": i['id'], "question": j['title'] , "answer": i['answer'], "correct_answer": j['correct_answer']})
                     
     return {"score": score, "wrong_answer": wrong_answer}
+
+def delete_collection(db: Session, collections_id: int):
+    db.query(Models.Questions).filter(Models.Questions.collections_id == collections_id).delete()
+    db.commit()
+    db.query(Models.Collections).filter(Models.Collections.id == collections_id).delete()
+    db.commit()
+    return True

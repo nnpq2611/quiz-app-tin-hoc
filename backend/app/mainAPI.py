@@ -61,3 +61,8 @@ async def create_questions(file: UploadFile = File(...),  db: Session = Depends(
 @app.post("/results/")
 def results(test: Schemas.Test, db: Session = Depends(get_db)):
     return Crud.results(db=db, test=test)
+
+@app.delete("/collections/{collections_id}")
+def delete_collection(collections_id: int, db: Session = Depends(get_db)):
+    return Crud.delete_collection(db=db, collections_id=collections_id)
+
