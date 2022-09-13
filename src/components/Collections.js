@@ -27,7 +27,7 @@ const Collections = () => {
     navigate("/test", { state: { id: id, title: title } });
   };
 
-  const handleDelete = async (id) => {
+  const deleteCollection = async (id) => {
     await axios
       .delete(`http://localhost:8000/collections/${id}`)
       .then((res) => {
@@ -41,6 +41,12 @@ const Collections = () => {
       });
     setCollections(collections.filter((collection) => collection.id !== id));
   };
+
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this collection?") === true) {
+      deleteCollection(id);
+    }
+  }
 
   return loading ? (
     <p>Loading ...</p>
