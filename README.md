@@ -3,12 +3,10 @@
 ## Project name: Quizz App
 #
 ## Members:
-* ## Phạm Duy Minh
-* ## Võ Duy Kha
-* ## Nguyễn Văn Huy Em
-* ## Nguyễn Thị Thu Hải
-* ## Trần Đức Huy
-#
+* ## Nguyễn Ngọc Phương Quỳnh
+* ## Huỳnh Thị Thanh Ngân
+* ## Phạm Như Ý
+
 ## Setup Backend
 * ### Step 1: open SQL Shell (psql)
 * ### Step 2: `$ create database quizz;`
