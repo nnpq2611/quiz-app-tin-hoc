@@ -1,6 +1,6 @@
 # Project CNPMNC
 
-## Project name: Quizz App
+## Project name: App Tin Hoc
 
 #
 
